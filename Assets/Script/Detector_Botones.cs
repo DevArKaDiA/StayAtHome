@@ -5,6 +5,8 @@ using UnityEngine;
 public class Detector_Botones : MonoBehaviour
 {   
     public bool canBePressed;
+    public bool isDisappearing;
+    public bool noteLost;
     public KeyCode keyToPress;
     // Start is called before the first frame update
     void Start()
@@ -18,19 +20,26 @@ public class Detector_Botones : MonoBehaviour
         if(Input.GetKeyDown(keyToPress)){
             if(canBePressed){
                 gameObject.SetActive(false);
+                isDisappearing=true;
                 GameManager.instance.NoteHit();
             }
+        }
+        //Este if es para las notas que no alcance a oprimir
+        if(!isDisappearing && !canBePressed && noteLost){
+            Debug.Log("--");
+            GameManager.instance.NoteMissed();
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag=="Activador"){
             canBePressed=true;
+            
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag=="Activador"){
             canBePressed=false;
-            GameManager.instance.NoteMissed();
+            noteLost=true;
         }
     }
 }

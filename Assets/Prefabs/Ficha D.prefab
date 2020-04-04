@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6709731166980357400}
   - component: {fileID: 6709731166980357401}
   m_Layer: 5
-  m_Name: Ficha X
+  m_Name: Ficha D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  keyToPress: 120
+  keyToPress: 100
 --- !u!1 &6709731167506721375
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 6709731167506721372}
   - component: {fileID: 6709731167506721373}
   m_Layer: 5
-  m_Name: Ficha X
+  m_Name: Ficha D(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
