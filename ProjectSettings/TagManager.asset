@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ficha
   - Activador
+  - Linea
   layers:
   - Default
   - TransparentFX

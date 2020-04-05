@@ -15,12 +15,8 @@ public class Controlador_Scroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!hasStarted){
-            if(Input.anyKeyDown){
-                hasStarted=true;
-            }
-        }
-        else{
+
+        if(hasStarted){
             transform.Translate(Vector2.left*beatTempo*Time.deltaTime);
         }
     }
