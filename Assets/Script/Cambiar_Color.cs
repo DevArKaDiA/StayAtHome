@@ -8,16 +8,15 @@ public class Cambiar_Color : MonoBehaviour
     public KeyCode keyToPress;
     public Image imageChildren;
     public Color colorPressed;
-    Color auxColor;
+    Color auxColor, auxColorBoton;
     public Image botonPunto;
     public Color colorPunto;
-    Color auxColor2;
     // Start is called before the first frame update
     void Start()
     {
         //imageChildren=GetComponentInChildren<Image>();
         auxColor=imageChildren.color;
-        auxColor2=botonPunto.color;
+        auxColorBoton=botonPunto.color;
     }
 
     // Update is called once per frame
@@ -38,6 +37,6 @@ public class Cambiar_Color : MonoBehaviour
         botonPunto.color=colorPunto;
     }
     public void ColorOriginal(){
-        botonPunto.color=auxColor2;
+        botonPunto.color=auxColorBoton;
     }
 }

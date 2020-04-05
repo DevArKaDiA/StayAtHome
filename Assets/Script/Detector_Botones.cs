@@ -28,13 +28,13 @@ public class Detector_Botones : MonoBehaviour
                 gameObject.SetActive(false);
                 //Este if solo es para saber si el objeto va a ser desactivado
                 isDisappearing=true;
-                GameManager.instance.NoteHit();
+                GameManager.instance.NoteHit(GameManager.instance.scorePerNote);
             }
         }
         //Este if es para las notas que no alcance a oprimir
         if(!isDisappearing && !canBePressed && noteLost){
             isDisappearing=true;
-            GameManager.instance.NoteMissed();
+            GameManager.instance.NoteMissed(GameManager.instance.scorePerNote);
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
