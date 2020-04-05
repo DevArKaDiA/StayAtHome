@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    AudioSource music;
+    public AudioSource melody, comping;
+    public float delayedTime;
+    public float badNotes;
+    public float goodNotes;
     public bool startPlaying;
     public Controlador_Scroller scroller;
     public static GameManager instance;
@@ -17,13 +20,11 @@ public class GameManager : MonoBehaviour
     public int[] multiplierThresholds;
     public Text scoreText;
     public Text multiText;
-    public float delayedTime;
     public float negativeValueNote;
     public Slider barraDinero;
     // Start is called before the first frame update
     void Start()
     {
-        music=GetComponent<AudioSource>();
         scoreText.text="Score: 0";
         instance=this;
         changeValueSlider();
@@ -39,6 +40,31 @@ public class GameManager : MonoBehaviour
                 Invoke("PlayMusic",delayedTime);
             }
         }
+        if(badNotes<=12){
+            if(badNotes<=10){
+                if(badNotes<=8){
+                    if(badNotes<=6){
+                        if(badNotes<=3){
+                            if(badNotes<=0){
+                                melody.volume=1f;
+                            } else {
+                                melody.volume=0.8f;
+                            }                           
+                        } else {
+                            melody.volume=0.6f;
+                        }                        
+                    } else {
+                        melody.volume=0.4f;
+                    }                    
+                } else {
+                    melody.volume=0.2f;
+                }                
+            } else {
+                melody.volume=0.001f;
+            }
+            
+        }
+
     }
     public void NoteHit(float score){
         Debug.Log("Nota Positiva");
@@ -53,15 +79,22 @@ public class GameManager : MonoBehaviour
         currentScore+=score;
         scoreText.text="Score: "+currentScore;
         changeValueSlider();
+        if(badNotes>0){
+            badNotes--;
+        }
     }
     public void NoteMissed(float score){
         Debug.Log("Nota Negativa");
-        currentScore-=negativeValueNote;
-        scoreText.text="Score: "+currentScore;
+        if(currentScore>0){
+            currentScore-=negativeValueNote;
+            scoreText.text="Score: "+currentScore;
+        }
         changeValueSlider();
+        badNotes++;
     }
     public void PlayMusic(){
-        music.Play();
+        melody.Play();
+        comping.Play();
     }
     public void changeValueSlider(){
         barraDinero.value=currentScore;

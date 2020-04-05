@@ -33,6 +33,7 @@ public class Detector_Botones : MonoBehaviour
         }
         //Este if es para las notas que no alcance a oprimir
         if(!isDisappearing && !canBePressed && noteLost){
+            Debug.Log("--");
             isDisappearing=true;
             GameManager.instance.NoteMissed(GameManager.instance.scorePerNote);
         }

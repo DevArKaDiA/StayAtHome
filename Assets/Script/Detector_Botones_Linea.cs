@@ -10,10 +10,7 @@ public class Detector_Botones_Linea : MonoBehaviour
     public bool noteLost;
     public KeyCode keyToPress;
     Cambiar_Color cambiar;
-    public float speed;
     Vector3 scaleChange;
-    public float timeToPress;
-    public float aux;
     public Image silueta;
     public Color colorNoteHit;
     public Color colorNoteLost;
