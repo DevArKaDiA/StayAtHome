@@ -17,12 +17,18 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text multiText;
     public float delayedTime;
+    public float negativeValueNote;
+    public float totalDinero;
+    public float valorSlider;
+    public Slider barraDinero;
     // Start is called before the first frame update
     void Start()
     {
         music=GetComponent<AudioSource>();
         scoreText.text="Score: 0";
         instance=this;
+        totalDinero=236*scorePerNote;
+        changeValueSlider();
     }
 
     // Update is called once per frame
@@ -48,11 +54,18 @@ public class GameManager : MonoBehaviour
         //multiText.text="Multiplier: x"+currentMultiplier;
         currentScore+=scorePerNote;
         scoreText.text="Score: "+currentScore;
+        changeValueSlider();
     }
     public void NoteMissed(){
         Debug.Log("Nota Negativa");
+        currentScore-=negativeValueNote;
+        scoreText.text="Score: "+currentScore;
+        changeValueSlider();
     }
     public void PlayMusic(){
         music.Play();
+    }
+    public void changeValueSlider(){
+        barraDinero.value=currentScore;
     }
 }
