@@ -6612,7 +6612,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e88bdb59ad09ac54b89ac2c0eb9dc6f7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3ed74feb8c845bb49a82c01052a39eb2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowTex:
@@ -6624,7 +6624,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Cutoff: 0.3
+    - _Cutoff: 0.898
     - _ShadowOffsetScale: 1
     - _ShadowStrength: 0.8
     - _SquashAmount: 1
