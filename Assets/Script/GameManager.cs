@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Controlador_Scroller scroller;
     public static GameManager instance;
     public float scorePerNote;
+    public float scorePerNoteLine;
     public float currentScore;
     public int currentMultiplier;
     public int multiplierTracker;
@@ -18,8 +19,6 @@ public class GameManager : MonoBehaviour
     public Text multiText;
     public float delayedTime;
     public float negativeValueNote;
-    public float totalDinero;
-    public float valorSlider;
     public Slider barraDinero;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +26,6 @@ public class GameManager : MonoBehaviour
         music=GetComponent<AudioSource>();
         scoreText.text="Score: 0";
         instance=this;
-        totalDinero=236*scorePerNote;
         changeValueSlider();
     }
 
@@ -42,7 +40,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void NoteHit(){
+    public void NoteHit(float score){
         Debug.Log("Nota Positiva");
         /*if(currentMultiplier-1<multiplierThresholds.Length){
             multiplierTracker++;
@@ -52,11 +50,11 @@ public class GameManager : MonoBehaviour
             }
         }*/
         //multiText.text="Multiplier: x"+currentMultiplier;
-        currentScore+=scorePerNote;
+        currentScore+=score;
         scoreText.text="Score: "+currentScore;
         changeValueSlider();
     }
-    public void NoteMissed(){
+    public void NoteMissed(float score){
         Debug.Log("Nota Negativa");
         currentScore-=negativeValueNote;
         scoreText.text="Score: "+currentScore;
