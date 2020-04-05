@@ -162,9 +162,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.4, y: -0.29308343}
+  m_Offset: {x: -0.8370358, y: -0.29308325}
   serializedVersion: 2
-  m_Radius: 44.776817
+  m_Radius: 30.355333
 --- !u!114 &4977620496799982806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,4 +178,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
+  isDisappearing: 0
+  noteLost: 0
   keyToPress: 107
