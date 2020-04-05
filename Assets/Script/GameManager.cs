@@ -14,13 +14,13 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public float scorePerNote;
     public float scorePerNoteLine;
+    public float negativeValueNote;
     public float currentScore;
     public int currentMultiplier;
     public int multiplierTracker;
     public int[] multiplierThresholds;
     public Text scoreText;
     public Text multiText;
-    public float negativeValueNote;
     public Slider barraDinero;
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
                 Invoke("PlayMusic",delayedTime);
             }
         }
-        if(badNotes<=12){
+        /*if(badNotes<=12){
             if(badNotes<=10){
                 if(badNotes<=8){
                     if(badNotes<=6){
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
                 melody.volume=0.001f;
             }
             
-        }
+        }*/
 
     }
     public void NoteHit(float score){
