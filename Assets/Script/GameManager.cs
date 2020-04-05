@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     public bool startPlaying;
     public Controlador_Scroller scroller;
     public static GameManager instance;
-    public int scorePerNote;
-    public int currentScore;
+    public float scorePerNote;
+    public float currentScore;
     public int currentMultiplier;
     public int multiplierTracker;
     public int[] multiplierThresholds;
@@ -38,15 +38,15 @@ public class GameManager : MonoBehaviour
     }
     public void NoteHit(){
         Debug.Log("Nota Positiva");
-        if(currentMultiplier-1<multiplierThresholds.Length){
+        /*if(currentMultiplier-1<multiplierThresholds.Length){
             multiplierTracker++;
             if(multiplierThresholds[currentMultiplier-1]<=multiplierTracker){
                 multiplierTracker=0;
                 currentMultiplier++;
             }
-        }
-        multiText.text="Multiplier: x"+currentMultiplier;
-        currentScore+=scorePerNote*currentMultiplier;
+        }*/
+        //multiText.text="Multiplier: x"+currentMultiplier;
+        currentScore+=scorePerNote;
         scoreText.text="Score: "+currentScore;
     }
     public void NoteMissed(){
