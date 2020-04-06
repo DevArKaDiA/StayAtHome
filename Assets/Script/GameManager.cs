@@ -15,13 +15,16 @@ public class GameManager : MonoBehaviour
     public float scorePerNote;
     public float scorePerNoteLine;
     public float negativeValueNote;
+    public float negativeValueNoteLine;
     public float currentScore;
     public int currentMultiplier;
     public int multiplierTracker;
     public int[] multiplierThresholds;
+    public float badMultiplier;
     public Text scoreText;
     public Text multiText;
     public Slider barraDinero;
+    public bool aux;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,40 +36,54 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(KeyCode.Escape)){
+            Time.timeScale=0;
+        } else {
+            Time.timeScale=1;
+        }
         if(!startPlaying){
             if(Input.anyKeyDown){
+                Time.timeScale=1;
                 startPlaying=true;
                 scroller.hasStarted=true;
                 Invoke("PlayMusic",delayedTime);
             }
+            else{
+                Time.timeScale=0;
+            }
         }
-        /*if(badNotes<=12){
-            if(badNotes<=10){
-                if(badNotes<=8){
-                    if(badNotes<=6){
-                        if(badNotes<=3){
+        if(badNotes<=20){
+            if(badNotes<=16){
+                if(badNotes<=12){
+                    if(badNotes<=8){
+                        if(badNotes<=4){
                             if(badNotes<=0){
                                 melody.volume=1f;
                             } else {
                                 melody.volume=0.8f;
+                                badMultiplier=1;
                             }                           
                         } else {
                             melody.volume=0.6f;
+                            badMultiplier=5;
                         }                        
                     } else {
+                        badMultiplier=5;
                         melody.volume=0.4f;
                     }                    
                 } else {
+                    badMultiplier=10;
                     melody.volume=0.2f;
                 }                
             } else {
+                badMultiplier=15;
                 melody.volume=0.001f;
             }
             
-        }*/
+        }
 
     }
-    public void NoteHit(float score){
+    public void NoteHit(float score,bool line){
         Debug.Log("Nota Positiva");
         /*if(currentMultiplier-1<multiplierThresholds.Length){
             multiplierTracker++;
@@ -79,14 +96,14 @@ public class GameManager : MonoBehaviour
         currentScore+=score;
         scoreText.text="Score: "+currentScore;
         changeValueSlider();
-        if(badNotes>0){
+        if(badNotes>0 && line){
             badNotes--;
         }
     }
-    public void NoteMissed(float score){
+    public void NoteMissed(float negativescore){
         Debug.Log("Nota Negativa");
         if(currentScore>0){
-            currentScore-=negativeValueNote;
+            currentScore-=negativescore*badMultiplier;
             scoreText.text="Score: "+currentScore;
         }
         changeValueSlider();
