@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public AudioSource melody, comping;
+    public float timeStopMusic;
     public float delayedTime;
     public float badNotes;
     public float goodNotes;
@@ -78,17 +79,17 @@ public class GameManager : MonoBehaviour
             }
         }
         //Bajar volumen por noob
-        if(badNotes<=18)
+        if(badNotes<=14)
         {
-            if(badNotes<=16)
+            if(badNotes<=12)
             {
-                if(badNotes<=14)
+                if(badNotes<=10)
                 {
-                    if(badNotes<=12)
+                    if(badNotes<=8)
                     {
-                        if(badNotes<=8)
+                        if(badNotes<=4)
                         {
-                            if(badNotes<=4)
+                            if(badNotes<=2)
                             {
                                 if(badNotes<=0)
                                 {
@@ -100,29 +101,28 @@ public class GameManager : MonoBehaviour
                                 }                           
                             } else {
                                 Debug.Log("0.6");
-                                melody.volume=0.6f;
+                                melody.volume=0.4f;
                                 badMultiplier=5;
                             }                        
                         } else {
                             Debug.Log("0.4");
                             badMultiplier=5;
-                            melody.volume=0.4f;
+                            melody.volume=0.2f;
                         }                    
                     } else {
                         Debug.Log("0.2");
                         badMultiplier=10;
-                        melody.volume=0.2f;
+                        melody.volume=0.1f;
                     }                
                 } else {
                     Debug.Log("0");
                     badMultiplier=15;
-                    melody.volume=0.1f;
+                    melody.volume=0.08f;
                 }
             } else {
                     Debug.Log("0");
                     if(barraDinero.value<=barra.noTanMal){
-                        melody.Stop();
-                        comping.Stop();
+                        Invoke("StopMusic",timeStopMusic);
                     }
                     badMultiplier=15;
                     melody.volume=0.05f;
@@ -164,6 +164,11 @@ public class GameManager : MonoBehaviour
         melody.Pause();
         comping.Pause();
     }
+    public void StopMusic(){
+        melody.Stop();
+        comping.Stop();
+    }
+
     public void changeValueSlider(){
         barraDinero.value=currentScore;
     }
