@@ -125,7 +125,6 @@ public class GameManager : MonoBehaviour
                         Invoke("StopMusic",timeStopMusic);
                     }
                     badMultiplier=15;
-                    melody.volume=0.05f;
             }
         }
 
@@ -150,6 +149,7 @@ public class GameManager : MonoBehaviour
     public void NoteMissed(float negativescore){
         Debug.Log("Nota Negativa");
         if(currentScore>0){
+            Debug.Log("Score");
             currentScore-=negativescore*badMultiplier;
             scoreText.text="Score: "+currentScore;
         }
@@ -165,6 +165,7 @@ public class GameManager : MonoBehaviour
         comping.Pause();
     }
     public void StopMusic(){
+        melody.volume=0.05f;
         melody.Stop();
         comping.Stop();
     }
