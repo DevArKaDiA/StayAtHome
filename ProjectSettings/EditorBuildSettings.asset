@@ -6,15 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/jyk_town 1.unity
+    guid: d83c725d70c000c459f9d682dee3fdb3
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 4a351c3e3574d484bbaccd55b68c52e4
   - enabled: 1
-    path: Assets/Scenes/jyk_esc1.unity
-    guid: ab96b65c55fbf5349a80045ac065ff6e
-  - enabled: 1
-    path: Assets/Scenes/jyk_esc2.unity
-    guid: 88e64b8763230e549ac3225ead989e23
-  - enabled: 1
-    path: Assets/Scenes/Nivel 1(Jugabilidad).unity
-    guid: 601f7e978066a444a88eb0cb2fa286d7
+    path: Assets/Scenes/jyk_town 2.unity
+    guid: 4989099d3f386b5498ceca954d9114e9
   m_configObjects: {}

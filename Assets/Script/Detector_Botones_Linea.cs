@@ -17,12 +17,12 @@ public class Detector_Botones_Linea : MonoBehaviour
     public Image relleno;
     public Color colorRellenoHit;
     public Color colorRelllenoLost;
-
+    bool aux;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        aux=true;
     }
 
     // Update is called once per frame
@@ -55,18 +55,23 @@ public class Detector_Botones_Linea : MonoBehaviour
                     transform.localScale=scaleChange;*/
                     //Este if solo es para saber si el objeto va a ser desactivado
                     isDisappearing=true;
-                    GameManager.instance.NoteHit(GameManager.instance.scorePerNoteLine);
+                    bool t;
+                    GameManager.instance.NoteHit(GameManager.instance.scorePerNoteLine,t=false);
                     Debug.Log("Quitando");
 
                     silueta.color=colorNoteHit;
                     relleno.color=colorRellenoHit;
+                    if(aux){
+                        GameManager.instance.badNotes--;
+                        aux=false;
+                    }
                     //transform.Translate(Vector2.left*speed*10);
                 }
             }
         }//Este if es para las notas que no alcance a oprimir
         else if(!isDisappearing && !canBePressed && noteLost){
             Debug.Log("--");
-            GameManager.instance.NoteMissed(GameManager.instance.scorePerNoteLine*30);
+            GameManager.instance.NoteMissed(GameManager.instance.negativeValueNoteLine);
             noteLost=false;
         }
 

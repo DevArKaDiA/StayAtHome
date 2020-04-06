@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +8,7 @@ public class BarraDinero : MonoBehaviour
     public Image fill;
     public Color barra70, barra50, barra30, barra0;
     Slider barra;
-    float bien, pasable, noTanMal, mal;
+    public float bien, pasable, noTanMal, mal;
     // Start is called before the first frame update
     void Start()
     {
