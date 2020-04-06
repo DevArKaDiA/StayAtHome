@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 350621890631939617}
   - component: {fileID: 350621890631939622}
   - component: {fileID: 350621890631939619}
+  - component: {fileID: 1622709946637769887}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -55,13 +56,19 @@ MonoBehaviour:
   scorePerNote: 150
   scorePerNoteLine: 10
   negativeValueNote: 200
+  negativeValueNoteLine: 0
   currentScore: 0
   currentMultiplier: 0
   multiplierTracker: 0
   multiplierThresholds: 020000000400000008000000
+  badMultiplier: 0
   scoreText: {fileID: 0}
   multiText: {fileID: 0}
   barraDinero: {fileID: 0}
+  aux: 0
+  panel: {fileID: 0}
+  win: {fileID: 0}
+  lost: {fileID: 0}
 --- !u!82 &350621890631939622
 AudioSource:
   m_ObjectHideFlags: 0
@@ -254,3 +261,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1622709946637769887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350621890631939623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bb24e1355fe014cbaf727d692a6178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public Text multiText;
     public Slider barraDinero;
     public bool aux;
+    public GameObject panel;
+    public GameObject win, lost;
+    bool pause;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,11 +39,29 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Escape)){
+        //Pausa
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            if(pause){
+                Time.timeScale=1;
+                panel.SetActive(false);
+                PlayMusic();
+            }else {
+                Time.timeScale=0;
+                panel.SetActive(true);
+                PauseMusic();
+            }
+            pause=!pause;
+
+        }  
+        //Comprobar si la musica ya termino
+        if(!comping.isPlaying && Time.timeScale==1){
             Time.timeScale=0;
-        } else {
-            Time.timeScale=1;
-        }
+            if(barraDinero.value>=barraDinero.gameObject.GetComponent<BarraDinero>().bien){
+                win.SetActive(true);
+            } else{
+                lost.SetActive(false);
+            }
+        } 
         if(!startPlaying){
             if(Input.anyKeyDown){
                 Time.timeScale=1;
@@ -112,6 +133,10 @@ public class GameManager : MonoBehaviour
     public void PlayMusic(){
         melody.Play();
         comping.Play();
+    }
+    public void PauseMusic(){
+        melody.Pause();
+        comping.Pause();
     }
     public void changeValueSlider(){
         barraDinero.value=currentScore;
