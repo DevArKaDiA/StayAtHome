@@ -20,4 +20,7 @@ public class NextLevel : MonoBehaviour
         Time.timeScale=1;
         SceneManager.LoadScene(levelName);
     }
+    public void Quitar(){
+        Application.Quit();
+    }
 }
