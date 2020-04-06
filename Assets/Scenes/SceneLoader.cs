@@ -12,6 +12,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(i);
     }
 
+    public void creditos()
+    {
+        SceneManager.LoadScene("endMenu");
+    }
     public void exit()
     {
         
