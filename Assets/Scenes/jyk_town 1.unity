@@ -8411,26 +8411,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8049603021045723871, guid: 44532f432e4e24f4b9b7cdc2ef1d7333,
-        type: 3}
-      propertyPath: m_FontData.m_BestFit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049603021045723871, guid: 44532f432e4e24f4b9b7cdc2ef1d7333,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049603021045723871, guid: 44532f432e4e24f4b9b7cdc2ef1d7333,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049603021045723871, guid: 44532f432e4e24f4b9b7cdc2ef1d7333,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8049603021348543626, guid: 44532f432e4e24f4b9b7cdc2ef1d7333,
         type: 3}
       propertyPath: m_FontData.m_BestFit

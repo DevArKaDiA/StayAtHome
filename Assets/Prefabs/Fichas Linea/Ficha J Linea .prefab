@@ -86,7 +86,7 @@ MonoBehaviour:
   colorNoteHit: {r: 0.85882354, g: 0.85882354, b: 0.85882354, a: 1}
   colorNoteLost: {r: 0.33962262, g: 0.3187967, b: 0.3187967, a: 1}
   relleno: {fileID: 677661014707389789}
-  colorRellenoHit: {r: 0.45246723, g: 0, b: 0.8207547, a: 1}
+  colorRellenoHit: {r: 0, g: 0.1686747, b: 1, a: 1}
   colorRelllenoLost: {r: 0.1792453, g: 0.12766999, b: 0.12766999, a: 1}
 --- !u!1 &677661014707389791
 GameObject:
