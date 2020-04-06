@@ -28,12 +28,14 @@ public class GameManager : MonoBehaviour
     public GameObject panel;
     public GameObject win, lost;
     bool pause;
+    BarraDinero barra;
     // Start is called before the first frame update
     void Start()
     {
         scoreText.text="Score: 0";
         instance=this;
         changeValueSlider();
+        barra=barraDinero.gameObject.GetComponent<BarraDinero>();
     }
 
     // Update is called once per frame
@@ -42,24 +44,26 @@ public class GameManager : MonoBehaviour
         //Pausa
         if(Input.GetKeyDown(KeyCode.Escape)){
             if(pause){
+                Debug.Log("PausaOff");
                 Time.timeScale=1;
                 panel.SetActive(false);
                 PlayMusic();
             }else {
+                Debug.Log("PausaOn");
+                PauseMusic();
                 Time.timeScale=0;
                 panel.SetActive(true);
-                PauseMusic();
             }
             pause=!pause;
 
         }  
         //Comprobar si la musica ya termino
-        if(!comping.isPlaying && Time.timeScale==1){
+        if(!comping.isPlaying && Time.timeScale==1 && startPlaying){
             Time.timeScale=0;
-            if(barraDinero.value>=barraDinero.gameObject.GetComponent<BarraDinero>().bien){
+            if(barraDinero.value>=barra.bien){
                 win.SetActive(true);
             } else{
-                lost.SetActive(false);
+                lost.SetActive(true);
             }
         } 
         if(!startPlaying){
@@ -73,34 +77,56 @@ public class GameManager : MonoBehaviour
                 Time.timeScale=0;
             }
         }
-        if(badNotes<=20){
-            if(badNotes<=16){
-                if(badNotes<=12){
-                    if(badNotes<=8){
-                        if(badNotes<=4){
-                            if(badNotes<=0){
-                                melody.volume=1f;
+        //Bajar volumen por noob
+        if(badNotes<=18)
+        {
+            if(badNotes<=16)
+            {
+                if(badNotes<=14)
+                {
+                    if(badNotes<=12)
+                    {
+                        if(badNotes<=8)
+                        {
+                            if(badNotes<=4)
+                            {
+                                if(badNotes<=0)
+                                {
+                                    melody.volume=1f;
+                                } else {
+                                    Debug.Log("1");
+                                    melody.volume=0.8f;
+                                    badMultiplier=1;
+                                }                           
                             } else {
-                                melody.volume=0.8f;
-                                badMultiplier=1;
-                            }                           
+                                Debug.Log("0.6");
+                                melody.volume=0.6f;
+                                badMultiplier=5;
+                            }                        
                         } else {
-                            melody.volume=0.6f;
+                            Debug.Log("0.4");
                             badMultiplier=5;
-                        }                        
+                            melody.volume=0.4f;
+                        }                    
                     } else {
-                        badMultiplier=5;
-                        melody.volume=0.4f;
-                    }                    
+                        Debug.Log("0.2");
+                        badMultiplier=10;
+                        melody.volume=0.2f;
+                    }                
                 } else {
-                    badMultiplier=10;
-                    melody.volume=0.2f;
-                }                
+                    Debug.Log("0");
+                    badMultiplier=15;
+                    melody.volume=0.1f;
+                }
             } else {
-                badMultiplier=15;
-                melody.volume=0.001f;
+                    Debug.Log("0");
+                    if(barraDinero.value<=barra.noTanMal){
+                        melody.Stop();
+                        comping.Stop();
+                    }
+                    badMultiplier=15;
+                    melody.volume=0.05f;
             }
-            
         }
 
     }
