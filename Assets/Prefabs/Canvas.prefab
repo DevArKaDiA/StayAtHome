@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b0b4412fe7c9b41905f55fcc03bf38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatTempo: 15
+  beatTempo: 0.6
   hasStarted: 0
 --- !u!1 &8049603021253289656
 GameObject:
