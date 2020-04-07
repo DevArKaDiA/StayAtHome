@@ -5,12 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void PauseGame(int aux){
+        Time.timeScale=aux;
     }
-
     public void RestartLevel(){
         Time.timeScale=1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

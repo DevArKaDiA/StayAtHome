@@ -36,7 +36,7 @@ public class Detector_Botones : MonoBehaviour
         if(!isDisappearing && !canBePressed && noteLost){
             Debug.Log("--");
             isDisappearing=true;
-            GameManager.instance.NoteMissed(GameManager.instance.scorePerNote);
+            GameManager.instance.NoteMissed(GameManager.instance.badValueNoteLine );
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {

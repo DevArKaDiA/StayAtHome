@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public float scorePerNote;
     public float scorePerNoteLine;
-    public float negativeValueNote;
-    public float negativeValueNoteLine;
+    public float badValueNoteLine;
+    public float badValueNote;
+
     public float currentScore;
     public int currentMultiplier;
     public int multiplierTracker;
@@ -29,7 +30,9 @@ public class GameManager : MonoBehaviour
     public GameObject panel;
     public GameObject win, lost;
     bool pause;
+    bool isTheEnd;
     BarraDinero barra;
+    bool norepeat;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +46,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Pausa
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if(Input.GetKeyDown(KeyCode.Escape) && startPlaying){
             if(pause){
                 Debug.Log("PausaOff");
                 Time.timeScale=1;
@@ -59,7 +62,7 @@ public class GameManager : MonoBehaviour
 
         }  
         //Comprobar si la musica ya termino
-        if(!comping.isPlaying && Time.timeScale==1 && startPlaying){
+        if(!comping.isPlaying && Time.timeScale==1 && startPlaying && isTheEnd){
             Time.timeScale=0;
             if(barraDinero.value>=barra.bien){
                 win.SetActive(true);
@@ -124,10 +127,18 @@ public class GameManager : MonoBehaviour
                     if(barraDinero.value<=barra.noTanMal){
                         Invoke("StopMusic",timeStopMusic);
                     }
-                    badMultiplier=15;
             }
         }
 
+
+        if(currentScore<=-600){
+            melody.volume-=0.1f;
+            if(!norepeat){
+                norepeat=true;
+                Invoke("StopMusic",timeStopMusic);
+            }
+            
+        }
     }
     public void NoteHit(float score,bool line){
         Debug.Log("Nota Positiva");
@@ -157,12 +168,16 @@ public class GameManager : MonoBehaviour
         badNotes++;
     }
     public void PlayMusic(){
+        if(!isTheEnd){
+            isTheEnd=true;
+        }
         melody.Play();
         comping.Play();
     }
     public void PauseMusic(){
         melody.Pause();
         comping.Pause();
+
     }
     public void StopMusic(){
         melody.volume=0.05f;

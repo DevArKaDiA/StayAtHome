@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
+    public bool level2;
     public GameObject[] objectos;
     int i=0;
     private void Awake() {
@@ -32,8 +33,10 @@ public class Tutorial : MonoBehaviour
                     objectos[2].SetActive(false);
                     gameObject.SetActive(false);
                 }
-                
-                
+            }
+            if(level2){
+                objectos[0].SetActive(true);
+                gameObject.SetActive(false);
             }
         }
     }

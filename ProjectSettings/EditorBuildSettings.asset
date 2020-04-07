@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: 4a351c3e3574d484bbaccd55b68c52e4
   - enabled: 1
+    path: Assets/Scenes/jyk_town 2.unity
+    guid: 954086c5f937ffb4595583f30bbbcc5c
+  - enabled: 0
     path: Assets/Scenes/jyk_town 1.unity
     guid: d83c725d70c000c459f9d682dee3fdb3
-  - enabled: 0
-    path: Assets/Scenes/jyk_town 2.unity
-    guid: 4989099d3f386b5498ceca954d9114e9
   - enabled: 0
     path: Assets/Scenes/endMenu.unity
     guid: 0634353417ea001498bbb0b216981cb5
